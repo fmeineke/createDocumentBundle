@@ -1,0 +1,5 @@
+DocID;PatientID;FallID;KDL_Code;File;DocRefID;Template
+D001;P001;E001;AD010102;input/ExampleDocument.txt ;    ;deid
+D002;P001;E001;AD010109;input/ExampleDocument.pdf ;D003;semantic
+D003;P001;E001;AD010109;input/ExampleDocument.docx;    ;deid
+D004;P001;    ;AD010109;input/ExampleDocument.docx;    ;deid

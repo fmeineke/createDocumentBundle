@@ -1,0 +1,131 @@
+    {
+        "fullUrl": "urn:uuid:${DocID}",
+        "resource": {
+            "resourceType": "DocumentReference",
+            "id": "${DocID}",
+            "meta": {
+                "profile": [
+                    "https://www.medizininformatik-initiative.de/fhir/ext/modul-dokument/StructureDefinition/mii-pr-dokument-dokument"
+                ]
+            },
+            "extension": [
+                {
+                    "url": "https://www.medizininformatik-initiative.de/fhir/ext/modul-dokument/StructureDefinition/mii-ex-dokument-nlp-processing-status",
+                    "valueCodeableConcept": {
+                        "coding": [
+                            {
+                                "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-dokument/CodeSystem/mii-cs-dokument-nlp-processing-status",
+                                "code": "deid"
+                            },
+                            {
+                                "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-dokument/CodeSystem/mii-cs-dokument-nlp-processing-status",
+                                "code": "surrogated"
+                            },
+                            {
+                                "system": "https://www.medizininformatik-initiative.de/fhir/ext/modul-dokument/CodeSystem/mii-cs-dokument-nlp-processing-status",
+                                "code": "semantic"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "masterIdentifier": {
+                "system": "urn:ietf:rfc:3986",
+                "value": "urn:oid:1.2.840.113556.1.8000.2554.58783.21864.3474.19410.44358.58254.41281.46340"
+            },
+            "identifier": [
+                {
+                    "system": "urn:ietf:rfc:3986",
+                    "value": "urn:uuid:0c287d32-01e3-4d87-9953-9fcc9404eb21",
+                    "use": "official"
+                }
+            ],
+            "status": "current",
+            "docStatus": "final",
+            "type": {
+                "coding": [
+                    {
+                        "version": "2025",
+                        "code": "${KDL_Code}",
+                        "system": "http://dvmd.de/fhir/CodeSystem/kdl",
+                        "display": "${KDL_Dispay}"
+                    },
+                    {
+                        "version": "3.0.1",
+                        "code": "${IHE_TypeCode}",
+                        "system": "http://ihe-d.de/CodeSystems/IHEXDStypeCode",
+                        "display": "${IHE_TypeDisplay}"
+                    }
+                ],
+                "text": "${KDL_Dispay}"
+            },
+            "category": [
+                {
+                    "coding": [
+                        {
+                            "version": "3.0.1",
+                            "code": "${IHE_CategoryCode}",
+                            "system": "http://ihe-d.de/CodeSystems/IHEXDSclassCode",
+                            "display": "${IHE_CategoryDisplay}"
+                        }
+                    ],
+                    "text": "${IHE_CategoryDisplay}"
+                }
+            ],
+            "subject": {
+                "reference": "urn:uuid:${PatientID}"
+            },
+            "relatesTo": [
+                {
+                    "code": "appends",
+                    "target": {
+                        "reference": "urn:uuid:${DocRefID}"
+                    }
+                }
+            ],
+            "securityLabel": [
+                {
+                    "coding": [
+                        {
+                            "version": "4.0.1",
+                            "code": "N",
+                            "system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+                            "display": "normal"
+                        }
+                    ]
+                }
+            ],
+            "content": [
+                {
+                    "attachment": {
+                        "contentType": "${FileMimeType}",
+                        "language": "de",
+                        "data": "${FileData}",
+                        "size": ${FileSize},
+                        "hash": "${FileHash}",
+                        "title": "${FileTitle}",
+                        "creation": "${FileCreationDate}"
+                    },
+                    "format": {
+                        "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+                        "system": "http://ihe.net/fhir/ihe.formatcode.fhir/CodeSystem/formatcode"
+                    }
+                }
+            ],
+            "context": {
+                "encounter": [                    {                        "reference": "urn:uuid:${FallID}"                    }          ],
+                "facilityType": {
+                    "coding": [
+                        {
+                            "code": "KHS",
+                            "system": "http://ihe-d.de/CodeSystems/PatientBezogenenGesundheitsversorgung"
+                        }
+                    ]
+                }
+            }
+        },
+        "request": {
+            "method": "POST",
+            "url": "DocumentReference"
+        }
+    }
