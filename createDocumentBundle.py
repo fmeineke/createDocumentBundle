@@ -100,7 +100,7 @@ def ersetze_variablen(zeile: str, daten: dict) -> str:
 
 def init_kdl_ihe_type():
     # Load JSON file
-    with open('conceptmap-kdl-ihe-typecode.xml.json', 'r', encoding='utf-8') as f:
+    with open('kdl-ihe-typecode.xml.json', 'r', encoding='utf-8') as f:
         data = json.load(f)
 
     # Navigate to the elements in the first group
