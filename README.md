@@ -1,24 +1,70 @@
-# createDocumentBundle
+# 📄 createDocumentBundle
 
-Eine mögliche Demonstration, wie aus bestehenden Dokumenten KDL Module Document valide DocumentReferences erzeugt werden können.
+Eine Demonstration, wie aus bestehenden Dokumenten **KDL Module Document** valide **FHIR DocumentReferences** erzeugt werden können.
 
-Alle Dokumente liegen in input. 
-Die Datei "metadata.csv" enthält notwendige Metadaten (DocID;PatientID;FallID;KDL_Code;File;DocRefID;Template), wobei
-* DocId die lokale Dokumentennummer
-* PatID die Patienten-ID
-* FallID (optional) die Fall-ID
-* KDL_Code der KDL Type Code des Dokuments
-* DocRefId (optional) eine lokale Dokumentennummer, auf die mit relatedTo verwiesen werden kann
-* Template entschiedet welches json DocumentReference template zu verwenden ist; derzeit sind nur die Werte "deid" oder "semantic" erlaubt
+---
 
-Die Demo wird über ein makefile gesteuert:
-* ein reines `make`sollte über python3 eine Datei `documentBundle.json` erzeugen. Die notwendigen KDL nach IHE type und IHE class Mapping-Dateien werden automatisch geladen.
-* `template-fhir-semantic.json`  ist das template für semantische Annotation (semantic)
-* `template-fhir-deid.json`  ist das template für de-identifizierte Texte (deid)
-* `make post` importiert das erzeugte Bundle in eine fhir server (Hier: hapi unter http://localhost:8080/fhir)
-* `make get` lädt, zur Kontrolle, per $everything alle Resourcen des Patienten "1" herunter.
+## 📂 Projektübersicht
+- Alle Eingabedokumente liegen im Ordner `input`.
+- Die Datei **`metadata.csv`** enthält notwendige Metadaten:
 
+| Feld        | Beschreibung                                                                 |
+|-------------|-------------------------------------------------------------------------------|
+| **DocID**   | Lokale Dokumentennummer                                                       |
+| **PatientID** | Patienten-ID (im Beispiel fix `P001`)                                       |
+| **FallID**  | Optionale Fall-ID (im Beispiel fix `E001`)                                    |
+| **KDL_Code**| KDL Type Code des Dokuments                                                   |
+| **File**    | Dateiname des Dokuments                                                       |
+| **DocRefID**| Optionale lokale Dokumentennummer, auf die mit `relatedTo` verwiesen werden kann |
+| **Template**| Bestimmt das JSON-Template für die DocumentReference (`deid` oder `semantic`) |
 
+---
 
+## ⚙️ Nutzung mit Makefile
+Die Demo wird über ein **Makefile** gesteuert:
 
-  
+- `make`  
+  → erzeugt über **Python3** eine Datei `documentBundle.json`.  
+  → notwendige KDL → IHE Type & IHE Class Mapping-Dateien werden automatisch geladen.
+
+- `template-fhir-semantic.json`  
+  → Template für semantische Annotation (`semantic`).
+
+- `template-fhir-deid.json`  
+  → Template für de-identifizierte Texte (`deid`).
+
+- `make post`  
+  → importiert das erzeugte Bundle per **POST** in einen FHIR-Server (HAPI unter `http://localhost:8080/fhir`).
+
+- `make post-init`  
+  → importiert per **PUT** (create/update) einen Patienten `P001` und ein Demo Encounter `E001`.
+
+- `make get`  
+  → lädt zur Kontrolle per `$everything` alle Ressourcen des Patienten `P001` herunter.
+
+---
+
+## 🧪 Getestete Umgebung
+- Aktueller **HAPI FHIR Server**
+
+---
+
+## 📋 Voraussetzungen
+- **Python 3**
+- **curl**
+
+---
+
+## 🚀 Quickstart
+```bash
+# Bundle erzeugen
+make
+
+# Patient & Encounter anlegen
+make post-init
+
+# Bundle in FHIR-Server importieren
+make post
+
+# Ressourcen des Patienten abrufen
+make get
