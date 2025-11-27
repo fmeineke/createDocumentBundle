@@ -1,5 +1,5 @@
 .PHONY: get post clean distclean post-init
-PATIENT_ID=13
+PATIENT_ID=P001
 
 document-bundle.json: kdl-ihe-typecode.xml.json kdl-ihe-classcode.xml.json input/metadata.csv createDocumentBundle.py
 	python3	createDocumentBundle.py
