@@ -1,0 +1,39 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+  {
+      "fullUrl": "urn:uuid:P001",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "P001",
+        "name": [{ "family": "Müller", "given": ["Anna"] }]
+      },
+      "gender": "female",
+      "request": { "method": "PUT", "url": "Patient/P001" }
+    },
+    {
+      "fullUrl": "urn:uuid:E001",
+      "resource": {
+        "resourceType": "Encounter",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "subject": {
+          "reference": "urn:uuid:P001"
+        },
+        "period": {
+          "start": "2025-11-01T09:00:00+01:00",
+          "end": "2025-11-01T09:30:00+01:00"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/E001"
+      }
+    }
+    ]   
+}

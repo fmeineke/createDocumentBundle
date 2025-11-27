@@ -69,7 +69,7 @@
                     }
                 ],
                 "subject": {
-                    "reference": "urn:uuid:${PatientID}"
+                    "reference": "Patient/${PatientID}"
                 },
                 "securityLabel": [
                     {
@@ -101,7 +101,7 @@
                     }
                 ],
                 "context": {
-                    "encounter": [                 { "reference": "urn:uuid:${FallID}"}],
+                    "encounter": [                 { "reference": "Encounter/${FallID}"}],
                     "facilityType": {
                         "coding": [
                             {

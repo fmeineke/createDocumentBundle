@@ -73,7 +73,7 @@
                 }
             ],
             "subject": {
-                "reference": "urn:uuid:${PatientID}"
+                "reference": "Patient/${PatientID}"
             },
             "relatesTo": [
                 {
@@ -113,7 +113,7 @@
                 }
             ],
             "context": {
-                "encounter": [                    {                        "reference": "urn:uuid:${FallID}"                    }          ],
+                "encounter": [                    {                        "reference": "Encounter/${FallID}"                    }          ],
                 "facilityType": {
                     "coding": [
                         {

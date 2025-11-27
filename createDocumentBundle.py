@@ -161,60 +161,10 @@ bundle_header = """
   "entry": [
 """
 
-bundle_header_test = """
-{
-  "resourceType": "Bundle",
-  "type": "transaction",
-  "entry": [
-  {
-      "fullUrl": "urn:uuid:P001",
-      "resource": {
-        "resourceType": "Patient",
-        "id": "P001",
-        "name": [{ "family": "Müller", "given": ["Anna"] }]
-      },
-      "request": { "method": "POST", "url": "Patient" }
-    },
-    {
-      "fullUrl": "urn:uuid:E001",
-      "resource": {
-        "resourceType": "Encounter",
-        "status": "finished",
-        "class": {
-          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-          "code": "AMB",
-          "display": "ambulatory"
-        },
-        "subject": {
-          "reference": "urn:uuid:P001"
-        },
-        "period": {
-          "start": "2025-11-01T09:00:00+01:00",
-          "end": "2025-11-01T09:30:00+01:00"
-        },
-        "reasonCode": [
-          {
-            "coding": [
-              {
-                "system": "http://snomed.info/sct",
-                "code": "65363002",
-                "display": "Otitis media"
-              }
-            ]
-          }
-        ]
-      },
-      "request": {
-        "method": "POST",
-        "url": "Encounter"
-      }
-    },
-"""
 bundle_footer = """
    ]
 }
 """
-
 
 def main():
     csv_pfad = 'input/metadata.csv'
@@ -227,8 +177,8 @@ def main():
     template_deid = read_template(template_deid_pfad)
     template_semantic = read_template(template_semantic_pfad)
 
-    with open("transaction-bundle.json",'w',encoding='utf-8') as f:
-        f.write(bundle_header_test)
+    with open("document-bundle.json",'w',encoding='utf-8') as f:
+        f.write(bundle_header)
         for i, eintrag in enumerate(daten, start=1): 
             if eintrag['Template'] == 'deid':
                 template = template_deid          
