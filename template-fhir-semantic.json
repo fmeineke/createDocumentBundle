@@ -48,7 +48,7 @@
                         "version": "2025",
                         "code": "${KDL_Code}",
                         "system": "http://dvmd.de/fhir/CodeSystem/kdl",
-                        "display": "${KDL_Dispay}"
+                        "display": "${KDL_Display}"
                     },
                     {
                         "version": "3.0.1",
@@ -57,7 +57,7 @@
                         "display": "${IHE_TypeDisplay}"
                     }
                 ],
-                "text": "${KDL_Dispay}"
+                "text": "${KDL_Display}"
             },
             "category": [
                 {

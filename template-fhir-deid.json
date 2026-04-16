@@ -53,7 +53,7 @@
                             "display": "${IHE_TypeDisplay}"
                         }
                     ],
-                    "text": "${KDL_Dispay}"
+                    "text": "${KDL_Display}"
                 },
                 "category": [
                     {

@@ -85,15 +85,15 @@ def ersetze_variablen(zeile: str, daten: dict) -> str:
         elif key == 'FileCreationDate':
            return file_creation(daten['File'])
         elif key == 'IHE_CategoryCode':
-           return ihe_class_code[daten['KDL_Code']]
+           return ihe_class_code.get(daten.get('KDL_Code', ''), '')
         elif key == 'IHE_TypeCode':
-           return ihe_type_code[daten['KDL_Code']]
+           return ihe_type_code.get(daten.get('KDL_Code', ''), '')
         elif key == 'IHE_CategoryDisplay':
-           return ihe_class_display[daten['KDL_Code']]
+           return ihe_class_display.get(daten.get('KDL_Code', ''), '')
         elif key == 'IHE_TypeDisplay':
-           return ihe_type_display[daten['KDL_Code']]
+           return ihe_type_display.get(daten.get('KDL_Code', ''), '')
         elif key == 'KDL_Display':
-           return kdl_display[daten['KDL_Code']]
+           return kdl_display.get(daten.get('KDL_Code', ''), '')
         elif key == 'Today':
            return datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
         else:
@@ -153,7 +153,6 @@ def process_input_row(eintrag: dict, template_zeilen: list[str], f , index: int)
         except FileNotFoundError:
             print(f"Datei nicht gefunden: {eintrag['Datei']}")
             return
-    f.write
     f.writelines(neue_zeilen)
 
 bundle_header = """
