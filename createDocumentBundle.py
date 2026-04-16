@@ -92,8 +92,10 @@ def ersetze_variablen(zeile: str, daten: dict) -> str:
            return ihe_class_display[daten['KDL_Code']]
         elif key == 'IHE_TypeDisplay':
            return ihe_type_display[daten['KDL_Code']]
-        elif key == 'KDL_Dispay':
+        elif key == 'KDL_Display':
            return kdl_display[daten['KDL_Code']]
+        elif key == 'Today':
+           return datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
         else:
             return daten.get(key, 'UNKNOWN')
     return re.sub(r'\${(\w+)}', ersatz, zeile)
